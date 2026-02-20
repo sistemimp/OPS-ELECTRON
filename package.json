@@ -1,0 +1,27 @@
+{
+  "name": "ops-electron",
+  "version": "1.0.0",
+  "description": "Convert XLS 65/67 to XLSX with text normalization",
+  "author": "Alex Olivieri",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder"
+  },
+  "devDependencies": {
+    "electron": "^30.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "dependencies": {
+    "electron-updater": "^6.3.9",
+    "mysql2": "^3.10.2",
+    "xlsx": "^0.18.5"
+  },
+  "build": {
+    "appId": "it.mediaprint.ops-electron",
+    "productName": "OPS Electron",
+    "win": {
+      "icon": "img/logoOPS.ico"
+    }
+  }
+}

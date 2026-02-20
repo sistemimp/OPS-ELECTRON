@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OPS Electron - Conversione XLS</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link rel="icon" href="img/logoOPS.ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container py-5">
+      <section class="mb-4 text-center">
+        <h1 class="display-6 fw-semibold">OPS • Elaborazione Pianificate</h1>
+        <p class="text-secondary">
+          Inserisci i dati del protocollo, seleziona il file `.xls` e genera un
+          file `.xlsx` con tutte le colonne in formato testo.
+        </p>
+      </section>
+
+      <section class="card border-0 shadow-sm">
+        <div class="card-header bg-white border-0 px-4 px-lg-5 pt-4">
+          <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+            <h2 class="h5 mb-0">Dati conversione</h2>
+            <div class="d-flex flex-wrap gap-2">
+              <button
+                type="submit"
+                form="convert-form"
+                class="btn btn-primary btn-sm"
+                id="convert-btn"
+                aria-label="Converti e salva"
+                title="Converti e salva"
+              >
+                <i class="bi bi-arrow-repeat"></i>
+              </button>
+              <button
+                id="clear-btn"
+                type="button"
+                class="btn btn-outline-danger btn-sm"
+                aria-label="Svuota tabella OPS-AR"
+                title="Svuota tabella OPS-AR"
+              >
+                <i class="bi bi-trash3"></i>
+              </button>
+              <button
+                id="import-btn"
+                type="button"
+                class="btn btn-outline-primary btn-sm"
+                aria-label="Importa ultimo XLSX in DB"
+                title="Importa ultimo XLSX in DB"
+              >
+                <i class="bi bi-database-add"></i>
+              </button>
+              <button
+                id="jasper-ar1-btn"
+                type="button"
+                class="btn btn-outline-secondary btn-sm"
+                aria-label="Salva OPS_AR1.pdf"
+                title="Salva OPS_AR1.pdf"
+              >
+                <i class="bi bi-file-earmark-pdf"></i>
+              </button>
+              <button
+                id="jasper-cartoline-btn"
+                type="button"
+                class="btn btn-outline-secondary btn-sm"
+                aria-label="Salva OPS_CartolineAR.pdf"
+                title="Salva OPS_CartolineAR.pdf"
+              >
+                <i class="bi bi-file-earmark-pdf"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body p-4 p-lg-5 pt-3">
+          <form id="convert-form" class="row g-3">
+            <div class="col-md-6">
+              <label for="protocol-number" class="form-label">n.protocollo</label>
+              <input
+                id="protocol-number"
+                type="text"
+                class="form-control"
+                placeholder="Es. 1234/2026"
+                required
+              />
+            </div>
+
+            <div class="col-md-6">
+              <label for="protocol-date" class="form-label">data protocollo</label>
+              <input id="protocol-date" type="date" class="form-control" required />
+            </div>
+
+            <div class="col-md-6">
+              <label for="lavorazione-code" class="form-label">riferimento lavorazione</label>
+              <input
+                id="lavorazione-code"
+                type="text"
+                class="form-control"
+                placeholder="Codice lavorazione"
+                required
+              />
+            </div>
+
+            <div class="col-md-6">
+              <label for="barcode-start" class="form-label">barcode iniziale</label>
+              <input
+                id="barcode-start"
+                type="number"
+                class="form-control"
+                placeholder="Es. 1000001"
+                required
+              />
+            </div>
+
+            <div class="col-12">
+              <label for="xls-file" class="form-label">file XLS 65/67</label>
+              <input id="xls-file" type="file" class="form-control" accept=".xls" required />
+            </div>
+
+            <div class="col-12"></div>
+          </form>
+
+          <div id="status" class="alert alert-info mb-0" data-type="info">
+            Pronto per la conversione.
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="renderer.js"></script>
+  </body>
+</html>
